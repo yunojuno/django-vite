@@ -76,6 +76,10 @@ DJANGO_VITE_STATIC_URL = urljoin(
 if DJANGO_VITE_STATIC_URL[-1] != "/":
     DJANGO_VITE_STATIC_URL += "/"
 
+DJANGO_VITE_USE_MANIFEST_SRI = getattr(
+    settings, "DJANGO_VITE_USE_MANIFEST_SRI", False
+)
+
 
 class DjangoViteAssetLoader:
     """
@@ -132,6 +136,9 @@ class DjangoViteAssetLoader:
         tags = []
         manifest_entry = self._manifest[path]
         scripts_attrs = {"type": "module", "crossorigin": "", **kwargs}
+
+        if DJANGO_VITE_USE_MANIFEST_SRI:
+            scripts_attrs["integrity"] = manifest_entry.get("integrity", "")
 
         # Add dependent CSS
         tags.extend(self._generate_css_files_of_asset(path, []))
