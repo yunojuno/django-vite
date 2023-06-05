@@ -232,8 +232,8 @@ You can redefine those variables in your `settings.py` :
     ...
   })
   ```
-- `DJANGO_VITE_USE_MANIFEST_SRI`: If set to `True`, any tags will include an `integrity` attribute using the corresponding value defined in the `manifest.json` file for that entry point (default : `False`)
-  - This should be used alongside a plugin such as [vite-plugin-manifest-sri](https://github.com/ElMassimo/vite-plugin-manifest-sri) which can generate integrity values for the manifest file.
+- `DJANGO_VITE_USE_MANIFEST_SRI`: If set to `True`, tags will include an `integrity` attribute using the corresponding value defined in the `manifest.json` file for that entry point (default : `False`)
+  - This should be used alongside a plugin such as [vite-plugin-manifest-sri](https://github.com/ElMassimo/vite-plugin-manifest-sri) which can generate integrity values in the manifest file.
 
 ## Notes
 
